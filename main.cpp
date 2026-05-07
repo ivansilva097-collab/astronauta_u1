@@ -220,10 +220,10 @@ void listarVoos() {
     cout << "Voos" << endl;
     for (int estado = 0; estado <= 3; estado++) {
         cout << nomeEstado[estado] << ":" << endl;
-        bool achou = false;
+        bool found = false;
         for (int i = 0; i < (int)voos.size(); i++) {
             if (voos[i].estado == estado) {
-                achou = true;
+                found = true;
                 cout << "  codigo: " << voos[i].codigo << endl;
                 for (int j = 0; j < (int)voos[i].cpfsPassageiros.size(); j++) {
                     int ia = buscarAstronauta(voos[i].cpfsPassageiros[j]);
@@ -234,16 +234,16 @@ void listarVoos() {
                 }
             }
         }
-        if (!achou) cout << "  nenhum" << endl;
+        if (!found) cout << "  nenhum" << endl;
     }
 }
 
 void listarMortos() {
     cout << "Mortos" << endl;
-    bool achou = false;
+    bool found = false;
     for (int i = 0; i < (int)astronautas.size(); i++) {
         if (!astronautas[i].vivo) {
-            achou = true;
+            found = true;
             cout << "cpf: " << astronautas[i].cpf << " nome: " << astronautas[i].nome << endl;
             cout << "  voos: ";
             if ((int)astronautas[i].voosCursados.size() == 0) {
@@ -257,7 +257,7 @@ void listarMortos() {
             cout << endl;
         }
     }
-    if (!achou) cout << "nenhum" << endl;
+    if (!found) cout << "nenhum" << endl;
 }
 
 int main() {
